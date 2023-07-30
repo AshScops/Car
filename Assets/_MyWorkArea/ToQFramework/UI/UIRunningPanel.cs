@@ -21,7 +21,7 @@ namespace QFramework.Car
 			m_playerModel = GameArch.Interface.GetModel<PlayerModel>();
             m_itemModel = GameArch.Interface.GetModel<ItemModel>();
 
-            m_playerModel.MaxHp.Register((maxhp) =>
+            m_playerModel.MaxHp.RegisterWithInitValue((maxhp) =>
             {
                 while(m_hpList.Count < maxhp)
                 {
@@ -29,7 +29,7 @@ namespace QFramework.Car
                 }
             }).UnRegisterWhenGameObjectDestroyed(this);
 
-            m_playerModel.Hp.Register((hp) =>
+            m_playerModel.Hp.RegisterWithInitValue((hp) =>
             {
 				if (hp < 0) return;
 
