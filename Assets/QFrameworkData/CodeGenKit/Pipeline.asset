@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 621f3f918dd5423d93a746ad8fc9082d, type: 3}
+  m_Name: Pipeline
+  m_EditorClassIdentifier: 
+  CurrentTask:
+    ShowLog: 0
+    Status: 1
+    GameObject: {fileID: 0}
+    From: 0
+    NameToFullName: []
+    BindInfos:
+    - TypeName: UnityEngine.UI.Button
+      PathToRoot: SkillBtn
+      MemberName: SkillBtn
+    - TypeName: UnityEngine.UI.Text
+      PathToRoot: DiamondCost
+      MemberName: DiamondCost
+    ScriptsFolder: Assets/_MyWorkArea/ToQFramework/UI
+    ClassName: SkillGrid
+    Namespace: QFramework.Car
+    MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace QFramework.Car\r\n{\r\n\tpublic
+      partial class SkillGrid : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
+      Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
+    DesignerCode: "// Generate Id:6ad8e7b4-2c0d-44c7-ad1d-009db1dcf8f9\r\nusing UnityEngine;\r\n\r\nnamespace
+      QFramework.Car\r\n{\r\n\tpublic partial class SkillGrid\r\n\t{\r\n\r\n\t\tpublic
+      UnityEngine.UI.Button SkillBtn;\r\n\r\n\t\tpublic UnityEngine.UI.Text DiamondCost;\r\n\r\n\t}\r\n}\r\n"
