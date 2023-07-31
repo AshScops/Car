@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using QFramework;
 using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
 using DG.Tweening;
 
 namespace QFramework.Car
@@ -24,10 +22,16 @@ namespace QFramework.Car
             var score = m_gameModel.Score;
             var level = m_playerModel.CurrentLevel;
             var sumDmg = m_gameModel.SumDmg;
+            var diamonds = score / 10;
+
+            //TODO:存入数据库
+            var m_itemModel = GameArch.Interface.GetModel<ItemModel>();
+            m_itemModel.Diamond.Value += diamonds;
 
             Score.text = "得分：    " + score;
             Level.text = "等级：    " + level;
             SumDmg.text = "总伤害：    " + sumDmg;
+            Diamond.text = "获得钻石：    " + diamonds; 
 
             var canvasGroup = GetComponent<CanvasGroup>();
             canvasGroup.alpha = 0;
@@ -35,38 +39,45 @@ namespace QFramework.Car
             Score.gameObject.SetActive(false);
             Level.gameObject.SetActive(false);
             SumDmg.gameObject.SetActive(false);
+            Diamond.gameObject.SetActive(false);
             OkBtn.gameObject.SetActive(false);
 
-            var duration = 0.8f;
+            var duration = 0.4f;
             var shakeDuration = 0.2f;
             var shakeStrength = new Vector3(20f, 20f, 0);
             ActionKit.Sequence()
-                    .Callback(() =>
-					{
-                        AudioKit.PlaySound("You Lose (4)");
-                        canvasGroup.DOFade(1, 3f);
-                    })
-                    .Delay(3f)
-                    .Callback(() =>
-					{
-                        DoAnim(Score.gameObject, shakeDuration, shakeStrength);
-                    })
-					.Delay(duration)
-					.Callback(() =>
-					{
-                        DoAnim(Level.gameObject, shakeDuration, shakeStrength);
-                    })
-                    .Delay(duration)
-					.Callback(() =>
-					{
-                        DoAnim(SumDmg.gameObject, shakeDuration, shakeStrength);
-                    })
-                    .Delay(duration)
-                    .Callback(() =>
-                    {
-                        OkBtn.gameObject.SetActive(true);
-                    })
-                   .Start(GameController.Instance);
+                .Callback(() =>
+				{
+                    AudioKit.PlaySound("You Lose (4)");
+                    canvasGroup.DOFade(1, 1.5f);
+                })
+                .Delay(1.5f)
+                .Callback(() =>
+				{
+                    DoAnim(Score.gameObject, shakeDuration, shakeStrength);
+                })
+				.Delay(duration)
+				.Callback(() =>
+				{
+                    DoAnim(Level.gameObject, shakeDuration, shakeStrength);
+                })
+                .Delay(duration)
+				.Callback(() =>
+				{
+                    DoAnim(SumDmg.gameObject, shakeDuration, shakeStrength);
+                })
+                .Delay(duration)
+                .Callback(() =>
+                {
+                    DoAnim(Diamond.gameObject, shakeDuration, shakeStrength);
+                })
+                .Delay(duration)
+                .Callback(() =>
+                {
+                    OkBtn.gameObject.SetActive(true);
+                })
+                .Start(GameController.Instance);
+
 
             OkBtn.onClick.AddListener(() =>
 			{

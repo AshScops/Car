@@ -5,7 +5,7 @@ using QFramework;
 
 namespace QFramework.Car
 {
-	// Generate Id:092fab00-05bc-44d9-9ec3-355b7f2f5677
+	// Generate Id:d04bc3fe-2955-4c35-8a61-4d7886d6e36a
 	public partial class UIEndPanel
 	{
 		public const string Name = "UIEndPanel";
@@ -21,6 +21,8 @@ namespace QFramework.Car
 		[SerializeField]
 		public UnityEngine.UI.Text SumDmg;
 		[SerializeField]
+		public UnityEngine.UI.Text Diamond;
+		[SerializeField]
 		public QFramework.Car.MyButton OkBtn;
 		
 		private UIEndPanelData mPrivateData = null;
@@ -32,6 +34,7 @@ namespace QFramework.Car
 			Score = null;
 			Level = null;
 			SumDmg = null;
+			Diamond = null;
 			OkBtn = null;
 			
 			mData = null;
