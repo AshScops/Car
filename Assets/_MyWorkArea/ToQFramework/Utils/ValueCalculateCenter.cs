@@ -142,8 +142,8 @@ namespace QFramework.Car
 
         public static float GetSpawnInterval()
         {
-            var res = gameModel.SpawnInterval - playerModel.CurrentLevel * 0.1f;
-            return res <= 0.01f ? 0.01f : res;
+            var res = gameModel.SpawnInterval - playerModel.CurrentLevel * 0.2f;
+            return res <= 0.001f ? 0.001f : res;
         }
 
         /// <summary>
@@ -155,5 +155,9 @@ namespace QFramework.Car
             return gameModel.EnemyCountLimit + 10 * playerModel.CurrentLevel;
         }
 
+        public static float GetEnemySpeed(float moveSpeed)
+        {
+            return moveSpeed + 0.2f * playerModel.CurrentLevel;
+        }
     }
 }

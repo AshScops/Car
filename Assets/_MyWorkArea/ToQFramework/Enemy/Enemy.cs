@@ -68,7 +68,7 @@ namespace QFramework.Car
 
             direction = direction.normalized;
             //Î»ÒÆ
-            transform.position += direction * MoveSpeed * Time.deltaTime;
+            transform.position += direction * ValueCalculateCenter.GetEnemySpeed(MoveSpeed)  * Time.deltaTime;
 
             //Ðý×ª
             Quaternion targetRot = Quaternion.LookRotation(direction);
