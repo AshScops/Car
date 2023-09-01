@@ -40,8 +40,19 @@ namespace QFramework.Car
                 this.SendCommand(new GetScoreCommand());
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
-            UIKit.OpenPanel("UIBeginPanel");
-            AudioKit.Settings.IsMusicOn.Value = true;
+
+            //UI Init
+            UIKit.OpenPanel<UIBeginPanel>();
+            UIKit.OpenPanel<UIAchievePop>(UILevel.PopUI);
+
+
+            //Audio Init
+            this.GetModel<SettingModel>().AudioEnable.RegisterWithInitValue((audioEnable) =>
+            {
+                AudioKit.Settings.IsMusicOn.Value = audioEnable;
+                AudioKit.Settings.IsSoundOn.Value = audioEnable;
+            }); ;
+            
             AudioKit.PlayMusic("Pretty Dungeon LOOP");
         }
 

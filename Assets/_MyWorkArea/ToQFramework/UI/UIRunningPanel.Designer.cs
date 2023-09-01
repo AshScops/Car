@@ -5,7 +5,7 @@ using QFramework;
 
 namespace QFramework.Car
 {
-	// Generate Id:d74371f5-425d-4443-8b09-03d255a8e855
+	// Generate Id:a4d75d83-5427-4079-a30f-2e3790266591
 	public partial class UIRunningPanel
 	{
 		public const string Name = "UIRunningPanel";

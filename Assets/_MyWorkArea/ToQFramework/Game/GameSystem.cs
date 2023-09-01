@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 namespace QFramework.Car
 {
@@ -41,15 +42,22 @@ namespace QFramework.Car
             ActionKit.Sequence()
                .Callback(() =>
                {
-                   m_startCamera.SetActive(false);
-                   m_focusCamera.SetActive(true);
+                   ActionKit.Custom((c) =>
+                   {
+                       c.OnStart(() =>
+                       {
+                           Camera.main.transform.DOMove(m_focusCamera.transform.position, 1.0f);
+                           Camera.main.transform.DOLocalRotate(m_focusCamera.transform.rotation.eulerAngles, 1.0f);
+                       });
+                       c.OnFinish(() => { GameArch.Interface.GetSystem<GameSystem>().GameResume(); });
+                   }).Start(GameController.Instance);
                })
                .Delay(0.8f)
                .Callback(() =>
                {
                    AudioKit.PlayMusic("Wasteland Combat Loop");
-                   UIKit.OpenPanel("UIRunningPanel");
-                   UIKit.OpenPanel("StorePanel");
+                   UIKit.OpenPanel<UIRunningPanel>();
+                   UIKit.OpenPanel<StorePanel>();
 
                    m_gameModel.BeforeGameStart.Trigger();
                    m_gameModel.GameState.Value = GameStates.isRunning;
@@ -57,6 +65,13 @@ namespace QFramework.Car
 
                    this.GetModel<ItemModel>().EquipItem(0);//装备初始武器
                    GameController.Instance.StartCoroutine(SpawnEnemies());
+
+                   var playerTrans = this.GetModel<PlayerModel>().PlayerTrans;
+                   var offset = Camera.main.transform.position - playerTrans.position;
+                   ActionKit.OnLateUpdate.Register(() =>
+                   {
+                       Camera.main.transform.position = playerTrans.position + offset;
+                   }).UnRegisterWhenGameObjectDestroyed(playerTrans.gameObject);
                })
                .Start(GameController.Instance);
         }
@@ -78,6 +93,12 @@ namespace QFramework.Car
             m_gameModel.GameState.Value = GameStates.isOver;
             GameController.Instance.StopAllCoroutines();
 
+            var score = m_gameModel.Score;
+            var diamonds = score / 10;
+            //TODO:存入数据库
+            var m_itemModel = this.GetModel<ItemModel>();
+            m_itemModel.Diamond.Value += diamonds;
+
             ActionKit.Sequence()
                .Callback(() =>
                {
@@ -86,7 +107,7 @@ namespace QFramework.Car
                .Delay(0.2f)
                .Callback(() =>
                {
-                   UIKit.OpenPanel("UIEndPanel");
+                   UIKit.OpenPanel<UIEndPanel>();
                })
                .Start(GameController.Instance);
 
@@ -142,5 +163,6 @@ namespace QFramework.Car
                 yield return new WaitForSeconds(ValueCalculateCenter.GetSpawnInterval());
             }
         }
+
     }
 }

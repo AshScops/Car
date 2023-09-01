@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using QFramework;
 using System.Collections.Generic;
 using UnityEngine.Rendering.PostProcessing;
+using DG.Tweening;
+using static UnityEditor.Progress;
 
 namespace QFramework.Car
 {
@@ -20,6 +22,7 @@ namespace QFramework.Car
 			mData = uiData as UIRunningPanelData ?? new UIRunningPanelData();
 			m_playerModel = GameArch.Interface.GetModel<PlayerModel>();
             m_itemModel = GameArch.Interface.GetModel<ItemModel>();
+            
 
             m_playerModel.MaxHp.RegisterWithInitValue((maxhp) =>
             {
@@ -65,7 +68,8 @@ namespace QFramework.Car
 		
 		protected override void OnOpen(IUIData uiData = null)
 		{
-		}
+
+        }
 		
 		protected override void OnShow()
 		{

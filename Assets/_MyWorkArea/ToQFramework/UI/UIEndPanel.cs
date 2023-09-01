@@ -24,10 +24,6 @@ namespace QFramework.Car
             var sumDmg = m_gameModel.SumDmg;
             var diamonds = score / 10;
 
-            //TODO:存入数据库
-            var m_itemModel = GameArch.Interface.GetModel<ItemModel>();
-            m_itemModel.Diamond.Value += diamonds;
-
             Score.text = "得分：    " + score;
             Level.text = "等级：    " + level;
             SumDmg.text = "总伤害：    " + sumDmg;

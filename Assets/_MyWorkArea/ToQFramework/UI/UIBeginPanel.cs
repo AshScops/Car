@@ -52,23 +52,22 @@ namespace QFramework.Car
 
             });
 
-            //TODO:
+            //打开商店面板
             StoreBtn.onClick.AddListener(() =>
             {
-                UIKit.OpenPanel("UISkillTreePanel"); 
+                UIKit.OpenPanel<UISkillTreePanel>(); 
             });
 
-            //TODO:
-            RankBtn.onClick.AddListener(() =>
+            //成就面板
+            AchievementsBtn.onClick.AddListener(() =>
             {
-
-
+                UIKit.OpenPanel<UIAchievePanel>();
             });
 
-			//TODO:
+			//TODO:开关伤害数字，音乐，音效
             SettingBtn.onClick.AddListener(() =>
             {
-
+                UIKit.OpenPanel<UISettingPanel>();
             });
 
 

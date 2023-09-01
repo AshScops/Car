@@ -17,6 +17,7 @@ namespace QFramework.Car
 
         private Transform m_weaponRoot;
         private Dictionary<string, List<GameObject>> m_currentWeapons = new Dictionary<string, List<GameObject>>();
+        public EasyEvent<string> WeaponFull = new EasyEvent<string>();
 
         public void Init(Transform weaponRoot)
         {
@@ -43,7 +44,9 @@ namespace QFramework.Car
         /// <returns>添加成功返回true，已满返回false</returns>
         public bool Add(GameObject weaponPrefab)
         {
-            for(int i = 0; i < m_weaponRoot.childCount; i++)
+            bool res = false;
+
+            for (int i = 0; i < m_weaponRoot.childCount; i++)
             {
                 if(m_weaponRoot.GetChild(i).childCount == 0)
                 {
@@ -53,12 +56,25 @@ namespace QFramework.Car
                         m_currentWeapons[weaponPrefab.name] = new List<GameObject>();
                     }
                     m_currentWeapons[weaponPrefab.name].Add(go);
-
-                    return true;
+                    res = true;
+                    break;
                 }
             }
-            Debug.Log("武器栏已满");
-            return false;
+
+            //检测栏位是否满
+            bool weaponFull = true;
+            for (int i = 0; i < m_weaponRoot.childCount; i++)
+            {
+                if (m_weaponRoot.GetChild(i).childCount == 0)
+                {
+                    weaponFull = false;
+                    break;
+                }
+            }
+            if(weaponFull)
+                WeaponFull.Trigger("装备武器至栏位上限");
+
+            return res;
         }
 
 

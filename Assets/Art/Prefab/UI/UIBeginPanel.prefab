@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 9186849261889638484}
   - component: {fileID: 499631875626782703}
   m_Layer: 0
-  m_Name: RankBtn
+  m_Name: AchievementsBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1029,7 +1029,7 @@ MonoBehaviour:
   DiamondNum: {fileID: 1811677378}
   PlayBtn: {fileID: 3328282344475212160}
   StoreBtn: {fileID: 3982666319681781757}
-  RankBtn: {fileID: 499631875626782703}
+  AchievementsBtn: {fileID: 499631875626782703}
   SettingBtn: {fileID: 3226044315184775364}
 --- !u!222 &7590920685105803992
 CanvasRenderer:

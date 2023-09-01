@@ -15,11 +15,12 @@ namespace QFramework.Car
             this.RegisterModel(new EnemyModel());
             this.RegisterModel(new WeaponModel());
             this.RegisterModel(new ItemModel());
+            this.RegisterModel(new AchieveModel());
+            this.RegisterModel(new SettingModel()); 
 
             //Systems
-            this.RegisterSystem(new GameSystem()); 
-
-            //TODO:³É¾Í
+            this.RegisterSystem(new GameSystem());
+            this.RegisterSystem(new AchieveSystem());
 
             //Utilities
 

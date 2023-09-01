@@ -653,6 +653,10 @@ MonoBehaviour:
   HpRoot: {fileID: 271351093}
   CoinNum: {fileID: 3870462319474770304}
   ExpSlider: {fileID: 860963402}
+  AchievePop: {fileID: 0}
+  AchieveImg: {fileID: 0}
+  AchieveName: {fileID: 0}
+  AchieveDesc: {fileID: 0}
 --- !u!1 &8432544000214888661
 GameObject:
   m_ObjectHideFlags: 0

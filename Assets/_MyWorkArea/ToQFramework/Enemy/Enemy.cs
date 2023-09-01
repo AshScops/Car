@@ -108,6 +108,9 @@ namespace QFramework.Car
                 m_enemyModel.OnEnemyBeHit.Trigger(this.transform.position);
             }
 
+            FloatingTextCanvas.ShowFloatingText(
+                this.GetModel<SettingModel>().DmgNumEnable, transform.position, sumDmg.ToString());
+
             m_gameModel.OnCalcDmg.Trigger((int)Mathf.Ceil(sumDmg));
         }
 

@@ -5,7 +5,7 @@ using QFramework;
 
 namespace QFramework.Car
 {
-	// Generate Id:72b29bb7-b082-4248-83b2-98d00bbbe29d
+	// Generate Id:3d136119-fdd3-4a48-a9e7-39e8bdb2f82a
 	public partial class UIBeginPanel
 	{
 		public const string Name = "UIBeginPanel";
@@ -17,7 +17,7 @@ namespace QFramework.Car
 		[SerializeField]
 		public QFramework.Car.MyButton StoreBtn;
 		[SerializeField]
-		public QFramework.Car.MyButton RankBtn;
+		public QFramework.Car.MyButton AchievementsBtn;
 		[SerializeField]
 		public QFramework.Car.MyButton SettingBtn;
 		
@@ -28,7 +28,7 @@ namespace QFramework.Car
 			DiamondNum = null;
 			PlayBtn = null;
 			StoreBtn = null;
-			RankBtn = null;
+			AchievementsBtn = null;
 			SettingBtn = null;
 			
 			mData = null;

@@ -35,6 +35,7 @@ namespace QFramework.Car
         /// </summary>
         private int powerNumPerLevel = 5;
 
+        public EasyEvent<int> GetPowerCnt = new EasyEvent<int>();
 
         #region ≥ı ºªØ
         public void Init()
@@ -134,6 +135,8 @@ namespace QFramework.Car
 
             m_powerIds.Add(powerId);
             FindPower(powerId).OnAttach();
+
+            GetPowerCnt.Trigger(m_powerIds.Count);
         }
 
         public void Remove(int powerId)

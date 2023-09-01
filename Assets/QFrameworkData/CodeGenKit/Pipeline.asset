@@ -19,18 +19,15 @@ MonoBehaviour:
     From: 0
     NameToFullName: []
     BindInfos:
-    - TypeName: UnityEngine.UI.Button
-      PathToRoot: SkillBtn
-      MemberName: SkillBtn
-    - TypeName: UnityEngine.UI.Text
-      PathToRoot: DiamondCost
-      MemberName: DiamondCost
-    ScriptsFolder: Assets/_MyWorkArea/ToQFramework/UI
-    ClassName: SkillGrid
+    - TypeName: RectTransform
+      PathToRoot: FloatingText
+      MemberName: FloatingText
+    ScriptsFolder: Assets/_MyWorkArea/ToQFramework/UI/CustomUIElement
+    ClassName: FloatingTextCanvas
     Namespace: QFramework.Car
     MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace QFramework.Car\r\n{\r\n\tpublic
-      partial class SkillGrid : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
+      partial class FloatingTextCanvas : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:6ad8e7b4-2c0d-44c7-ad1d-009db1dcf8f9\r\nusing UnityEngine;\r\n\r\nnamespace
-      QFramework.Car\r\n{\r\n\tpublic partial class SkillGrid\r\n\t{\r\n\r\n\t\tpublic
-      UnityEngine.UI.Button SkillBtn;\r\n\r\n\t\tpublic UnityEngine.UI.Text DiamondCost;\r\n\r\n\t}\r\n}\r\n"
+    DesignerCode: "// Generate Id:bae52741-2b6e-4ccc-a9f0-2425809ec058\r\nusing UnityEngine;\r\n\r\nnamespace
+      QFramework.Car\r\n{\r\n\tpublic partial class FloatingTextCanvas\r\n\t{\r\n\r\n\t\tpublic
+      RectTransform FloatingText;\r\n\r\n\t}\r\n}\r\n"

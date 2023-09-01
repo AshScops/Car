@@ -17,13 +17,13 @@ MonoBehaviour:
   Img: {fileID: 21300000, guid: e32b8056f5f2eb741bec42f791c7f1b5, type: 3}
   Description: "\u6362\u5F39\u65F6\u5BF9\u8F83\u5927\u8303\u56F4\u5185\u7684\u654C\u4EBA\u9644\u7740\u6EE1\u5C42\uFF085\u5C42\uFF09\u706B\u5143\u7D20"
   SkillEffects:
-  - rid: 1219981406286643203
+  - rid: 1729001099258757121
   IsNeedAllPreSkill: 0
   PreSkill: []
   references:
     version: 2
     RefIds:
-    - rid: 1219981406286643203
+    - rid: 1729001099258757121
       type: {class: DoElement, ns: QFramework.Car, asm: Assembly-CSharp}
       data:
         element: 0
