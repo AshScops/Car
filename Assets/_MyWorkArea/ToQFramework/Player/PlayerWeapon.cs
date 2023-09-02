@@ -24,17 +24,11 @@ namespace QFramework.Car
             this.m_weaponRoot = weaponRoot;
         }
 
-
-        public bool Add(int index)
-        {
-            return Add(ResLoader.Allocate().LoadSync<GameObject>(paths[index]));
-        }
-
         /// <param name="path"></param>
         /// <returns>添加成功返回true，已满返回false</returns>
-        public bool Add(string path)
+        public bool Add(int index)
         {
-            return Add(ResLoader.Allocate().LoadSync<GameObject>(path));
+            return Add(paths[index]);
         }
 
         /// <summary>
@@ -42,20 +36,21 @@ namespace QFramework.Car
         /// </summary>
         /// <param name="weaponPrefab"></param>
         /// <returns>添加成功返回true，已满返回false</returns>
-        public bool Add(GameObject weaponPrefab)
+        public bool Add(string path)
         {
             bool res = false;
+            GameObject weaponPrefab = ResLoader.Allocate().LoadSync<GameObject>(path);
 
             for (int i = 0; i < m_weaponRoot.childCount; i++)
             {
                 if(m_weaponRoot.GetChild(i).childCount == 0)
                 {
                     var go = GameObject.Instantiate(weaponPrefab, m_weaponRoot.GetChild(i));
-                    if (!m_currentWeapons.ContainsKey(weaponPrefab.name))
+                    if (!m_currentWeapons.ContainsKey(path))
                     {
-                        m_currentWeapons[weaponPrefab.name] = new List<GameObject>();
+                        m_currentWeapons[path] = new List<GameObject>();
                     }
-                    m_currentWeapons[weaponPrefab.name].Add(go);
+                    m_currentWeapons[path].Add(go);
                     res = true;
                     break;
                 }

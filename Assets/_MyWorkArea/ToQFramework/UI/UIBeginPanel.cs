@@ -21,6 +21,9 @@ namespace QFramework.Car
             PlayBtn.onClick.AddListener(() =>
             {
                 PlayBtn.interactable = false;
+                StoreBtn.interactable = false;
+                AchievementsBtn.interactable = false;
+                SettingBtn.interactable = false;
 
                 ActionKit.Sequence()
 						.Callback(() =>

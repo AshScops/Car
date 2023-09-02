@@ -99,7 +99,8 @@ namespace QFramework.Car
                         btnText.text = "已领取";
                         singleAchieve.transform.SetAsLastSibling();
 
-                        //TODO:增加货币
+                        //增加货币
+                        GameArch.Interface.GetModel<ItemModel>().Diamond.Value += achieveInfo.AchieveBonus;
                     });
                 }
 
